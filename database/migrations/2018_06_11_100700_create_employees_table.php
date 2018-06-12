@@ -36,6 +36,7 @@ class CreateEmployeesTable extends Migration
             $table->string('nid',30);
             $table->string('religion',20);
             $table->date('dob')->nullable();
+            $table->text('image')->nullable();
 
             $table->longText('other_details')->nullable();
             $table->timestamps();
