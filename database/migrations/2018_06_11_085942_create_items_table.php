@@ -18,7 +18,10 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->string('name', 100)->unique();
 
-            $table->unsignedInteger('item_category_id')->nullable()->index();
+            $table->unsignedInteger('brand_id')->index();
+            $table->foreign('brand_id')->references('id')->on('brands');
+
+            $table->unsignedInteger('item_category_id')->index();
             $table->foreign('item_category_id')->references('id')->on('item_categories')->onDelete('cascade');
 
             $table->string('code', 20)->unique();

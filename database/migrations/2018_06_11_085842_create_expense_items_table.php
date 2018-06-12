@@ -18,7 +18,10 @@ class CreateExpenseItemsTable extends Migration
             $table->increments('id');
             $table->string('name', 100)->unique();
 
-            $table->unsignedInteger('expense_category_id')->nullable()->index();
+            $table->unsignedInteger('brand_id')->index();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+
+            $table->unsignedInteger('expense_category_id')->index();
             $table->foreign('expense_category_id')->references('id')->on('expense_categories')->onDelete('cascade');
 
             $table->string('code', 20)->unique();
