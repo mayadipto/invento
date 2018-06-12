@@ -18,6 +18,7 @@ class CreateItemCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name', 50)->unique();
             $table->string('code', 20)->unique();
+            $table->boolean('raw_material')->default(false);
             $table->text('details')->nullable();
 
             $table->unsignedInteger('parent_id')->nullable()->index();
