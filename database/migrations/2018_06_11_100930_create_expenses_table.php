@@ -24,7 +24,7 @@ class CreateExpensesTable extends Migration
             $table->foreign('expense_by')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedInteger('quantity');
-            $table->decimal('price');
+            $table->decimal('price',8,2);
             $table->longText('details')->nullable();
 
             $table->timestamps();

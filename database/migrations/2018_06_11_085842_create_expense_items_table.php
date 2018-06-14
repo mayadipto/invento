@@ -27,6 +27,7 @@ class CreateExpenseItemsTable extends Migration
             $table->string('code', 20)->unique();
             $table->text('details')->nullable();
             $table->string('unit', 20);
+
             $table->timestamps();
         });
     }

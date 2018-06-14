@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ExpenseResource;
+use App\Models\Brand;
 use App\Models\Expense;
+use App\Models\ExpenseItem;
+use App\User;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ExpenseController extends Controller
 {
@@ -14,7 +19,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        return ExpenseResource::collection(Expense::orderBy('created_at', 'desc')->paginate(15));
     }
 
     /**
@@ -35,7 +40,15 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $expense = new Expense();
+
+        $expense->expense_item_id = $request->item;
+        $expense->expense_by = $request->user;
+        $expense->quantity = $request->quantity;
+        $expense->price = $request->price;
+        $expense->details = ($request->details != null)? $request->details : null;
+        $expense->save();
+        return $expense;
     }
 
     /**
@@ -46,7 +59,7 @@ class ExpenseController extends Controller
      */
     public function show(Expense $expense)
     {
-        //
+        return new ExpenseResource($expense);
     }
 
     /**
@@ -69,7 +82,12 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, Expense $expense)
     {
-        //
+        $expense->expense_item_id = $request->item;
+        $expense->quantity = $request->quantity;
+        $expense->price = $request->price;
+        $expense->details = ($request->details != null)? $request->details : null;
+        $expense->save();
+        return $expense;
     }
 
     /**
@@ -80,6 +98,10 @@ class ExpenseController extends Controller
      */
     public function destroy(Expense $expense)
     {
-        //
+        $expense->delete();
+        return response([
+            'status'=> true,
+            'message'=> 'Expense deleted successfully...'
+        ]);
     }
 }

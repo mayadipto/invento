@@ -3,7 +3,11 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +50,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof ModelNotFoundException ){
+            return response([
+                'status' => false,
+                'message'=> 'Model Not Found'
+            ], Response::HTTP_NOT_FOUND);
+        }elseif ($exception instanceof MethodNotAllowedHttpException){
+            return response([
+                'status' => false,
+                'message' => 'Method Not allowed'
+            ], Response::HTTP_METHOD_NOT_ALLOWED);
+        }elseif ($exception instanceof QueryException ){
+            return response([
+                'status' => false,
+                'message' => 'Database query failed'
+            ], Response::HTTP_METHOD_NOT_ALLOWED);
+        }
+
         return parent::render($request, $exception);
     }
 }
