@@ -21,15 +21,17 @@ class CreateSellsTable extends Migration
             $table->unsignedInteger('item_id')->index();
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
 
-            $table->unsignedInteger('customer_id')->index();
+            $table->unsignedInteger('customer_id')->nullable()->index();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
 
-            $table->unsignedInteger('purchased_by')->index();
-            $table->foreign('purchased_by')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedInteger('sell_by')->index();
+            $table->foreign('sell_by')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedInteger('quantity');
             $table->decimal('purchase_price');
             $table->decimal('sell_price');
+            $table->decimal('discount')->default(0);
+            $table->decimal('total');
             $table->longText('details')->nullable();
 
             $table->timestamps();

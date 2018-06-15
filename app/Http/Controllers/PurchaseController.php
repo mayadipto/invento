@@ -62,6 +62,7 @@ class PurchaseController extends Controller
             DB::rollBack();
         }
         if(isset($exception)){
+            DB::rollBack();
             return response([
                 'status'=> false,
                 'message'=> 'Purchase failed...'
