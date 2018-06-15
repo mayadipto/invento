@@ -23,3 +23,5 @@ Route::apiResource('/item-categories', 'ItemCategoryController');
 Route::apiResource('/items', 'ItemController');
 Route::apiResource('/brands', 'BrandController');
 Route::apiResource('/expenses', 'ExpenseController');
+Route::apiResource('/purchases', 'PurchaseController');
+Route::apiResource('/sells', 'SellController');

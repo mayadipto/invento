@@ -28,7 +28,8 @@ class CreatePurchasesTable extends Migration
             $table->foreign('purchased_by')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedInteger('quantity');
-            $table->decimal('price');
+            $table->decimal('purchase_price');
+            $table->decimal('sell_price');
             $table->longText('details')->nullable();
 
             $table->timestamps();

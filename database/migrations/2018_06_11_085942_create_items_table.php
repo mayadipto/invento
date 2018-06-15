@@ -16,7 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 100)->unique();
+            $table->string('name', 100);
 
             $table->unsignedInteger('brand_id')->index();
             $table->foreign('brand_id')->references('id')->on('brands');
@@ -26,7 +26,10 @@ class CreateItemsTable extends Migration
 
             $table->string('code', 20)->unique();
             $table->text('details')->nullable();
+            $table->unsignedInteger('quantity')->nullable();
             $table->string('unit', 20);
+            $table->decimal('purchase_price')->nullable();
+            $table->decimal('sell_price')->nullable();
             $table->timestamps();
         });
     }

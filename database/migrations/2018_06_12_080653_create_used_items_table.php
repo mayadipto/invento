@@ -24,7 +24,10 @@ class CreateUsedItemsTable extends Migration
             $table->foreign('used_by')->references('id')->on('employees')->onDelete('cascade');
 
             $table->unsignedInteger('quantity');
-            $table->decimal('price');
+            $table->decimal('purchase_price');
+            $table->decimal('sell_price');
+            $table->decimal('discount', 2,2)->default(0);
+            $table->decimal('total');
             $table->longText('details')->nullable();
             $table->timestamps();
         });
