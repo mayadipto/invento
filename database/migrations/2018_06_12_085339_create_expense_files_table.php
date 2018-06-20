@@ -17,8 +17,8 @@ class CreateExpenseFilesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->text('url');
-            $table->unsignedInteger('expense_id')->nullable()->index();
-            $table->foreign('expense_id')->references('id')->on('expenses')->onDelete('cascade');
+            $table->unsignedInteger('expense_invoice_id')->nullable()->index();
+            $table->foreign('expense_invoice_id')->references('id')->on('expense_invoices')->onDelete('cascade');
             $table->timestamps();
         });
     }

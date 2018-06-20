@@ -17,14 +17,10 @@ class CreateExpensesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
 
-            $table->unsignedInteger('expense_item_id')->index();
-            $table->foreign('expense_item_id')->references('id')->on('expense_items')->onDelete('cascade');
+            $table->unsignedInteger('expense_invoice_id')->index();
+            $table->foreign('expense_invoice_id')->references('id')->on('expense_invoices')->onDelete('cascade');
 
-            $table->unsignedInteger('expense_by')->index();
-            $table->foreign('expense_by')->references('id')->on('users')->onDelete('cascade');
-
-            $table->unsignedInteger('quantity');
-            $table->decimal('price',8,2);
+            $table->decimal('amount',8,2);
             $table->longText('details')->nullable();
 
             $table->timestamps();

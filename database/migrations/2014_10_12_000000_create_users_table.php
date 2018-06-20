@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             /**
              * ROLES
              * customer = 1
-             * employee = 2
-             * supplier = 3
+             * supplier = 2
+             * employee = 3
              * moderator = 4
              * admin = 5
              * super = 6

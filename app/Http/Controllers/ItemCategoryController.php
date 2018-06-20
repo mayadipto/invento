@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ItemCategory;
+use App\User;
 use Illuminate\Http\Request;
 
 class ItemCategoryController extends Controller
@@ -14,14 +15,17 @@ class ItemCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return ItemCategory::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function rawmaterials(){
+        return ItemCategory::where('raw_material','=','1')->orderBy('name','asc')->get();
+    }
+
+    public function products(){
+        return ItemCategory::where('raw_material','=','0')->orderBy('name','asc')->get();
+    }
+
     public function create()
     {
         //

@@ -16,16 +16,11 @@ class CreatePurchasesTable extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('code')->unique();
+            $table->unsignedInteger('purchase_invoice_id')->index();
+            $table->foreign('purchase_invoice_id')->references('id')->on('purchase_invoices')->onDelete('cascade');
 
             $table->unsignedInteger('item_id')->index();
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-
-            $table->unsignedInteger('supplier_id')->index();
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
-
-            $table->unsignedInteger('purchased_by')->index();
-            $table->foreign('purchased_by')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedInteger('quantity');
             $table->decimal('purchase_price');

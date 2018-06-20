@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ExpenseCategory;
+use App\Models\ExpenseInvoice;
 use Illuminate\Http\Request;
 
-class ExpenseCategoryController extends Controller
+class ExpenseInvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ExpenseCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ExpenseCategory  $expenseCategory
+     * @param  \App\Models\ExpenseInvoice  $expenseInvoice
      * @return \Illuminate\Http\Response
      */
-    public function show(ExpenseCategory $expenseCategory)
+    public function show(ExpenseInvoice $expenseInvoice)
     {
         //
     }
@@ -52,10 +52,10 @@ class ExpenseCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ExpenseCategory  $expenseCategory
+     * @param  \App\Models\ExpenseInvoice  $expenseInvoice
      * @return \Illuminate\Http\Response
      */
-    public function edit(ExpenseCategory $expenseCategory)
+    public function edit(ExpenseInvoice $expenseInvoice)
     {
         //
     }
@@ -64,10 +64,10 @@ class ExpenseCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ExpenseCategory  $expenseCategory
+     * @param  \App\Models\ExpenseInvoice  $expenseInvoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExpenseCategory $expenseCategory)
+    public function update(Request $request, ExpenseInvoice $expenseInvoice)
     {
         //
     }
@@ -75,10 +75,10 @@ class ExpenseCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ExpenseCategory  $expenseCategory
+     * @param  \App\Models\ExpenseInvoice  $expenseInvoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ExpenseCategory $expenseCategory)
+    public function destroy(ExpenseInvoice $expenseInvoice)
     {
         //
     }

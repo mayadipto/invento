@@ -17,14 +17,16 @@ class CreateUsedItemsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
 
+            $table->unsignedInteger('used_item_invoice_id')->index();
+            $table->foreign('used_item_invoice_id')->references('id')->on('used_item_invoices')->onDelete('cascade');
+
             $table->unsignedInteger('item_id')->index();
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
 
-            $table->unsignedInteger('used_by')->index();
-            $table->foreign('used_by')->references('id')->on('employees')->onDelete('cascade');
 
             $table->unsignedInteger('quantity');
-            $table->decimal('sell_price');
+            $table->decimal('purchase_price');
+            $table->decimal('total');
             $table->longText('details')->nullable();
             $table->timestamps();
         });

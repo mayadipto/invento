@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Items\ItemCollectionResoruce;
-use App\Models\Item;
+use App\Models\SellInvoice;
 use Illuminate\Http\Request;
 
-class ItemController extends Controller
+class SellInvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +14,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return Item::all();
-    }
-
-    public function getWithCode(Request $request) {
-        $code = $request->code;
-        return ItemCollectionResoruce::collection(Item::where('code','like', '%'. $code .'%')
-            ->orWhere('name','like', '%'. $code .'%')->take(5)->get());
+        //
     }
 
     /**
@@ -33,8 +26,6 @@ class ItemController extends Controller
     {
         //
     }
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -50,10 +41,10 @@ class ItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Item  $item
+     * @param  \App\Models\SellInvoice  $sellInvoice
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show(SellInvoice $sellInvoice)
     {
         //
     }
@@ -61,10 +52,10 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Item  $item
+     * @param  \App\Models\SellInvoice  $sellInvoice
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit(SellInvoice $sellInvoice)
     {
         //
     }
@@ -73,10 +64,10 @@ class ItemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Item  $item
+     * @param  \App\Models\SellInvoice  $sellInvoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(Request $request, SellInvoice $sellInvoice)
     {
         //
     }
@@ -84,10 +75,10 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Item  $item
+     * @param  \App\Models\SellInvoice  $sellInvoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy(SellInvoice $sellInvoice)
     {
         //
     }

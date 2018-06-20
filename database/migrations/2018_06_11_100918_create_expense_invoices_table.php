@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExpenseItemFilesTable extends Migration
+class CreateExpenseInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateExpenseItemFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('expense_item_files', function (Blueprint $table) {
+        Schema::create('expense_invoices', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->text('url');
-            $table->unsignedInteger('expense_item_id')->nullable()->index();
-            $table->foreign('expense_item_id')->references('id')->on('expense_items')->onDelete('cascade');
+            $table->string('code')->unique();
+
+            $table->unsignedInteger('expense_by')->index();
+            $table->foreign('expense_by')->references('id')->on('employees')->onDelete('cascade');
+
+            $table->decimal('total_amount');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateExpenseItemFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expense_item_files');
+        Schema::dropIfExists('expense_invoices');
     }
 }

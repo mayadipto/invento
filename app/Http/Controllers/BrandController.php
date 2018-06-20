@@ -6,6 +6,8 @@ use App\Http\Requests\BrandRequest;
 use App\Http\Resources\BrandResource;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class BrandController extends Controller
 {
@@ -35,10 +37,9 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BrandRequest $request)
+    public function store(Request $request)
     {
         $brand = new Brand();
-//        return $request;
         $brand->name = $request->name;
         $brand->details = $request->details;
         $brand->image = ($request->image !=null)? $request->image: null;

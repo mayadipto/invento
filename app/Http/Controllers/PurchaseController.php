@@ -21,7 +21,7 @@ class PurchaseController extends Controller
     public function index()
     {
 //        return Purchase::all();
-        return PurchaseCollectionResource::collection(Purchase::all());
+        return PurchaseCollectionResource::collection(Purchase::paginate(15));
     }
 
     /**
@@ -33,7 +33,6 @@ class PurchaseController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *

@@ -14,7 +14,15 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        return Supplier::all();
+    }
+
+    public function getSupplierByName(Request $request) {
+//        return $request->name;
+        return Supplier::select('id', 'name', 'contact_no')
+            ->where('name', 'like', '%'. $request->name.'%')
+            ->orWhere('contact_no', 'like', '%'. $request->name.'%')
+            ->take(5)->get();
     }
 
     /**

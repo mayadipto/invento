@@ -17,8 +17,8 @@ class CreateSellsFilesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->text('url');
-            $table->unsignedInteger('sell_id')->nullable()->index();
-            $table->foreign('sell_id')->references('id')->on('sells')->onDelete('cascade');
+            $table->unsignedInteger('sell_invoice_id')->nullable()->index();
+            $table->foreign('sell_invoice_id')->references('id')->on('sell_invoices')->onDelete('cascade');
             $table->timestamps();
         });
     }

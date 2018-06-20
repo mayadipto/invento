@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ExpenseItem;
+use App\Models\PurchaseInvoice;
 use Illuminate\Http\Request;
 
-class ExpenseItemController extends Controller
+class PurchaseInvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ExpenseItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ExpenseItem  $expenseItem
+     * @param  \App\Models\PurchaseInvoice  $purchaseInvoice
      * @return \Illuminate\Http\Response
      */
-    public function show(ExpenseItem $expenseItem)
+    public function show(PurchaseInvoice $purchaseInvoice)
     {
         //
     }
@@ -52,10 +52,10 @@ class ExpenseItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ExpenseItem  $expenseItem
+     * @param  \App\Models\PurchaseInvoice  $purchaseInvoice
      * @return \Illuminate\Http\Response
      */
-    public function edit(ExpenseItem $expenseItem)
+    public function edit(PurchaseInvoice $purchaseInvoice)
     {
         //
     }
@@ -64,10 +64,10 @@ class ExpenseItemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ExpenseItem  $expenseItem
+     * @param  \App\Models\PurchaseInvoice  $purchaseInvoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExpenseItem $expenseItem)
+    public function update(Request $request, PurchaseInvoice $purchaseInvoice)
     {
         //
     }
@@ -75,10 +75,10 @@ class ExpenseItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ExpenseItem  $expenseItem
+     * @param  \App\Models\PurchaseInvoice  $purchaseInvoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ExpenseItem $expenseItem)
+    public function destroy(PurchaseInvoice $purchaseInvoice)
     {
         //
     }

@@ -37,6 +37,15 @@ class CreateEmployeesTable extends Migration
             $table->string('religion',20);
             $table->date('dob')->nullable();
             $table->text('image')->nullable();
+            /*
+             * Disabled = 0 // Means Leave the job
+             * Pending = 1 // Confirm to joined but started to work yet
+             * Active = 2  // Means Currently working in company
+             * Leave = 4 // Working on the company but currently on leave;
+             * Suspended = 5 // Is an employee, but currently suspended due to some reason
+             *
+             */
+            $table->unsignedTinyInteger('status')->default(1);
 
             $table->longText('other_details')->nullable();
             $table->timestamps();
