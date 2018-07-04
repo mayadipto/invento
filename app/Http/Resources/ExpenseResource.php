@@ -2,7 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\Items\ItemCollectionResoruce;
 use App\Models\ExpenseItem;
+use App\Models\Item;
 use App\User;
 use Illuminate\Http\Resources\Json\Resource;
 
@@ -18,17 +20,8 @@ class ExpenseResource extends Resource
     {
         return [
             'id'=> $this->id,
-            'item' => ExpenseItem::find($this->expense_item_id),
-            'expensed_by'=> [
-                'name'=>User::find($this->expense_by)->name,
-                'email'=>User::find($this->expense_by)->email,
-            ],
-            'quantity'=> $this->quantity,
-            'price'=>$this->price,
             'details'=> $this->details,
-            'created_at'=> $this->created_at->format('Y:m:d H:i:s'),
-            'updated_at'=> $this->updated_at->format('Y:m:d H:i:s')
-
+            'amount'=> $this->amount
         ];
     }
 }

@@ -27,8 +27,9 @@ class CreateSellsTable extends Migration
             $table->decimal('purchase_price');
             $table->decimal('sell_price');
             $table->decimal('discount')->default(0);
-            $table->decimal('total');
             $table->longText('details')->nullable();
+            $table->boolean('deleted')->default(false);
+
 
             $table->timestamps();
         });

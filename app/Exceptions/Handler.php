@@ -63,7 +63,8 @@ class Handler extends ExceptionHandler
         }elseif ($exception instanceof QueryException ){
             return response([
                 'status' => false,
-                'message' => 'Database query failed'
+                'message' => 'Database query failed',
+                'error' => $exception
             ], Response::HTTP_METHOD_NOT_ALLOWED);
         }
 

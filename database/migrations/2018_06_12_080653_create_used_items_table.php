@@ -28,6 +28,8 @@ class CreateUsedItemsTable extends Migration
             $table->decimal('purchase_price');
             $table->decimal('total');
             $table->longText('details')->nullable();
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }

@@ -22,6 +22,8 @@ class CreateUsedItemInvoicesTable extends Migration
             $table->foreign('used_by')->references('id')->on('employees')->onDelete('cascade');
 
             $table->decimal('total_used_amount');
+            $table->boolean('deleted')->default(false);
+
 
             $table->timestamps();
         });

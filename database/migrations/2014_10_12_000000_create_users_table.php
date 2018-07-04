@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
              *
              */
             $table->unsignedTinyInteger('role')->default(1);
-            $table->string('email')->unique();
+            $table->string('email',80)->unique();
             $table->string('password');
             $table->rememberToken();
             /**

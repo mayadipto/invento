@@ -22,6 +22,8 @@ class CreateExpensesTable extends Migration
 
             $table->decimal('amount',8,2);
             $table->longText('details')->nullable();
+            $table->boolean('deleted')->default(false);
+
 
             $table->timestamps();
         });

@@ -24,6 +24,7 @@ class CreateSalariesTable extends Migration
 
             $table->unsignedInteger('employee_id')->index();
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->boolean('deleted')->default(false);
 
             $table->timestamps();
         });

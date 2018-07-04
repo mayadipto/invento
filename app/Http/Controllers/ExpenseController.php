@@ -19,7 +19,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        return ExpenseResource::collection(Expense::orderBy('created_at', 'desc')->paginate(15));
+        return ExpenseResource::collection(Expense::orderBy('created_at', 'desc')->paginate(50));
     }
 
     /**
@@ -86,7 +86,7 @@ class ExpenseController extends Controller
         $expense->quantity = $request->quantity;
         $expense->price = $request->price;
         $expense->details = ($request->details != null)? $request->details : null;
-        $expense->save();
+        $expense->update();
         return $expense;
     }
 

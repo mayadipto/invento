@@ -19,6 +19,8 @@ class CreateExpenseFilesTable extends Migration
             $table->text('url');
             $table->unsignedInteger('expense_invoice_id')->nullable()->index();
             $table->foreign('expense_invoice_id')->references('id')->on('expense_invoices')->onDelete('cascade');
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }

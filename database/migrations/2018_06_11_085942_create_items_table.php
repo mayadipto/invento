@@ -24,12 +24,15 @@ class CreateItemsTable extends Migration
             $table->unsignedInteger('item_category_id')->index();
             $table->foreign('item_category_id')->references('id')->on('item_categories')->onDelete('cascade');
 
-            $table->string('code', 20)->unique();
+            $table->string('code', 50)->unique();
             $table->text('details')->nullable();
             $table->unsignedInteger('quantity')->nullable();
             $table->string('unit', 20);
             $table->decimal('purchase_price')->nullable();
             $table->decimal('sell_price')->nullable();
+            $table->decimal('discount')->default(0);
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }

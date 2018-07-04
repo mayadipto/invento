@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Employee\EmployeeCollectionResource;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return EmployeeCollectionResource::collection(Employee::all());
+    }
+    public function employByNameOrCode($text) {
+        return EmployeeCollectionResource::collection(
+            Employee::where('name', 'like', '%'.$text.'%')
+            ->orWhere('code', 'like', '%'.$text.'%')->get());
     }
 
     /**

@@ -19,6 +19,8 @@ class CreateSellsFilesTable extends Migration
             $table->text('url');
             $table->unsignedInteger('sell_invoice_id')->nullable()->index();
             $table->foreign('sell_invoice_id')->references('id')->on('sell_invoices')->onDelete('cascade');
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }

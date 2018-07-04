@@ -27,8 +27,8 @@ class PurchaseResource extends JsonResource
             "purchase_price" => $this->purchase_price,
             "sell_price" => $this->sell_price,
             "details" => $this->details,
-            'created_at'=> $this->created_at->format('Y:m:d H:i:s'),
-            'updated_at'=> $this->updated_at->format('Y:m:d H:i:s')
+            'created_at'=> $this->created_at->format('Y-m-d H:i:s'),
+            'updated_at'=> $this->updated_at->format('Y-m-d H:i:s')
         ];
     }
 }

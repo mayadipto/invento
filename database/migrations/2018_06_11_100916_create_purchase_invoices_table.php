@@ -17,7 +17,7 @@ class CreatePurchaseInvoicesTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('code')->unique();
+            $table->string('code', 50)->unique();
 
             $table->unsignedInteger('purchased_by')->index();
             $table->foreign('purchased_by')->references('id')->on('users')->onDelete('cascade');
@@ -26,6 +26,8 @@ class CreatePurchaseInvoicesTable extends Migration
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
 
             $table->decimal('total_purchase_price');
+            $table->boolean('deleted')->default(false);
+
 
             $table->timestamps();
         });

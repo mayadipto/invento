@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\JWT;
 use App\Http\Requests\PurchaseRequest;
 use App\Http\Resources\Purchases\PurchaseCollectionResource;
 use App\Http\Resources\Purchases\PurchaseResource;
@@ -10,6 +11,7 @@ use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
+use JWTAuth;
 
 class PurchaseController extends Controller
 {
@@ -17,11 +19,20 @@ class PurchaseController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
-    public function index()
+    public function __construct()
     {
-//        return Purchase::all();
-        return PurchaseCollectionResource::collection(Purchase::paginate(15));
+        $this->middleware('jwt');
+    }
+    public function index(Request $request)
+    {
+        /*
+         * $role = auth()->user()->role;
+         * getting the current user role;
+         *
+         */
+        return PurchaseCollectionResource::collection(Purchase::orderBy('created_at', 'asc')->paginate(15));
     }
 
     /**

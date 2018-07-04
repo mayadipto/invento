@@ -13,7 +13,7 @@ $factory->define(App\Models\Sell::class, function (Faker $faker) {
         'quantity'=> $quantity,
         'purchase_price'=> $item->purchase_price,
         'sell_price'=> $item->sell_price,
-        'total'=> $item->sell_price*$quantity,
-        'details'=> $faker->text(80)
+        'details'=> $faker->text(80),
+        'discount'=> $item->discount
     ];
 });

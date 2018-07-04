@@ -16,7 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('code', 20)->unique();
+            $table->string('code', 50)->unique();
 
             $table->unsignedInteger('user_id')->nullable()->index();
             $table->foreign('user_id')->references('id')->on('users');
@@ -48,6 +48,8 @@ class CreateEmployeesTable extends Migration
             $table->unsignedTinyInteger('status')->default(1);
 
             $table->longText('other_details')->nullable();
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }

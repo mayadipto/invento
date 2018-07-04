@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Customer\CustomerResource;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => []]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+
+    }
+
+    public function customerByContact($contact) {
+        return CustomerResource::collection(Customer::where('contact_no', 'like', '%'. $contact .'%')->take(10)->get());
     }
 
     /**

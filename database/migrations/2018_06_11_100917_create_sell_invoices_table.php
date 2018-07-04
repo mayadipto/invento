@@ -27,6 +27,10 @@ class CreateSellInvoicesTable extends Migration
 
             $table->decimal('total_purchase_price');
             $table->decimal('total_sell_price');
+            $table->decimal('vat')->default(0);
+            $table->decimal('vat_amount')->default(0);
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }

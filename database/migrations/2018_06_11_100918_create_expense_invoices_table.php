@@ -16,12 +16,14 @@ class CreateExpenseInvoicesTable extends Migration
         Schema::create('expense_invoices', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('code')->unique();
+            $table->string('code', 50)->unique();
 
             $table->unsignedInteger('expense_by')->index();
             $table->foreign('expense_by')->references('id')->on('employees')->onDelete('cascade');
 
             $table->decimal('total_amount');
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }

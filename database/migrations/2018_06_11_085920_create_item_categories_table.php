@@ -17,12 +17,13 @@ class CreateItemCategoriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 50)->unique();
-            $table->string('code', 20)->unique();
+            $table->string('code', 50)->unique();
             $table->boolean('raw_material')->default(false);
             $table->text('details')->nullable();
 
             $table->unsignedInteger('parent_id')->nullable()->index();
             $table->foreign('parent_id')->references('id')->on('item_categories')->onDelete('cascade');
+            $table->boolean('deleted')->default(false);
 
             $table->timestamps();
         });

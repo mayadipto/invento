@@ -19,6 +19,8 @@ class CreatePurchaseFilesTable extends Migration
             $table->text('url');
             $table->unsignedInteger('purchase_invoice_id')->nullable()->index();
             $table->foreign('purchase_invoice_id')->references('id')->on('purchase_invoices')->onDelete('cascade');
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }

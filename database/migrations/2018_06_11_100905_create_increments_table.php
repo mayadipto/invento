@@ -32,6 +32,8 @@ class CreateIncrementsTable extends Migration
             $table->unsignedDecimal('previous_basic');
             $table->unsignedDecimal('previous_house_rent');
             $table->unsignedDecimal('previous_others');
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }

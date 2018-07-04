@@ -12,7 +12,7 @@ $factory->define(App\Models\Item::class, function (Faker $faker) {
         'item_category_id' => function(){
             return \App\Models\ItemCategory::all()->random();
         },
-        'code' => $faker->unique()->text(10),
+        'code' => 'item-'.$faker->unique()->numberBetween(100000,999999),
         'quantity'=> rand(100,200),
         'purchase_price'=> $purchase_price,
         'sell_price'=> $purchase_price+rand(5,10),
@@ -20,6 +20,7 @@ $factory->define(App\Models\Item::class, function (Faker $faker) {
         'unit' => function(){
             $unit = array('kg','meter','litter','gram','pcs');
             return $unit[array_rand($unit)];
-        }
+        },
+        'discount' => $faker->numberBetween(0, 5)
     ];
 });

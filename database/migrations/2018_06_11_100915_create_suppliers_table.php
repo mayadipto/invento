@@ -16,7 +16,7 @@ class CreateSuppliersTable extends Migration
         Schema::create('suppliers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('code', 20)->unique();
+            $table->string('code', 50)->unique();
 
             $table->unsignedInteger('user_id')->nullable()->index();
             $table->foreign('user_id')->references('id')->on('users');
@@ -27,6 +27,8 @@ class CreateSuppliersTable extends Migration
             $table->string('email',50)->nullable();
             $table->text('details')->nullable();
             $table->text('image')->nullable();
+            $table->boolean('deleted')->default(false);
+
 
             $table->timestamps();
         });

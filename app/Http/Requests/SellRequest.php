@@ -24,13 +24,12 @@ class SellRequest extends FormRequest
     public function rules()
     {
         return [
-            'code'=> 'required|unique:purchases|max:20',
             "item_id"=> 'required|integer|exists:items,id',
             "sell_by"=> 'required|integer| exists:users,id',
             "customer_id"=> 'integer|exists:customers,id',
             "quantity"=> 'required|integer',
             "sell_price"=> 'required|numeric',
-            "vat"=> 'required|numeric'
+            "discount"=> 'numeric|max:40'
         ];
     }
 }

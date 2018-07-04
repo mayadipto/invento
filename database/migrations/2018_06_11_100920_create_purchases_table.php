@@ -26,6 +26,8 @@ class CreatePurchasesTable extends Migration
             $table->decimal('purchase_price');
             $table->decimal('sell_price');
             $table->longText('details')->nullable();
+            $table->boolean('deleted')->default(false);
+
 
             $table->timestamps();
         });

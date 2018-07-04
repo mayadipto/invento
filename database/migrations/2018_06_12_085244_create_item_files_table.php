@@ -19,6 +19,8 @@ class CreateItemFilesTable extends Migration
             $table->text('url');
             $table->unsignedInteger('item_id')->nullable()->index();
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->boolean('deleted')->default(false);
+
             $table->timestamps();
         });
     }
